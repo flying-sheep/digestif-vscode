@@ -1,6 +1,6 @@
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import * as path from 'path';
-import { Configuration } from 'webpack';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import * as path from 'path'
+import { Configuration } from 'webpack'
 
 const config: Configuration = {
   target: 'node',
@@ -32,6 +32,6 @@ const config: Configuration = {
       },
     ],
   },
-};
+}
 
-export default config;
+export default config

@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import * as vscode from 'vscode'
 import {
   LanguageClient,
   LanguageClientOptions,
@@ -6,7 +6,7 @@ import {
   ServerOptions,
   TextDocumentIdentifier,
   TextDocumentPositionParams,
-} from 'vscode-languageclient';
+} from 'vscode-languageclient'
 
 export enum BuildStatus {
   /**
@@ -34,7 +34,7 @@ export interface BuildResult {
   /**
    * The status of the build process.
    */
-  status: BuildStatus;
+  status: BuildStatus
 }
 
 export enum ForwardSearchStatus {
@@ -63,14 +63,14 @@ export interface ForwardSearchResult {
   /**
    * The status of the previewer process.
    */
-  status: ForwardSearchStatus;
+  status: ForwardSearchStatus
 }
 
 interface BuildTextDocumentParams {
   /**
    * The text document to build.
    */
-  textDocument: TextDocumentIdentifier;
+  textDocument: TextDocumentIdentifier
 }
 
 abstract class BuildTextDocumentRequest {
@@ -79,7 +79,7 @@ abstract class BuildTextDocumentRequest {
     BuildResult,
     void,
     void
-  >('textDocument/build');
+  >('textDocument/build')
 }
 
 abstract class ForwardSearchRequest {
@@ -88,27 +88,18 @@ abstract class ForwardSearchRequest {
     ForwardSearchResult,
     void,
     void
-  >('textDocument/forwardSearch');
+  >('textDocument/forwardSearch')
 }
 
-export class LatexLanguageClient extends LanguageClient {
-  constructor(
-    name: string,
-    serverOptions: ServerOptions,
-    clientOptions: LanguageClientOptions,
-  ) {
-    super(name, serverOptions, clientOptions);
-    this.registerProposedFeatures();
-  }
-
+export class TexLanguageClient extends LanguageClient {
   public async build(document: vscode.TextDocument): Promise<BuildResult> {
     const params: BuildTextDocumentParams = {
       textDocument: this.code2ProtocolConverter.asTextDocumentIdentifier(
         document,
       ),
-    };
+    }
 
-    return this.sendRequest(BuildTextDocumentRequest.type, params);
+    return this.sendRequest(BuildTextDocumentRequest.type, params)
   }
 
   public async forwardSearch(
@@ -118,8 +109,8 @@ export class LatexLanguageClient extends LanguageClient {
     const params = this.code2ProtocolConverter.asTextDocumentPositionParams(
       document,
       position,
-    );
+    )
 
-    return this.sendRequest(ForwardSearchRequest.type, params);
+    return this.sendRequest(ForwardSearchRequest.type, params)
   }
 }
