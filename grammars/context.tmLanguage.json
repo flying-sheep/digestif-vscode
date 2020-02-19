@@ -63,6 +63,22 @@
       ]
     },
     {
+      "begin": "(\\\\)(startformula)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.function.tex" },
+        "2": { "name": "support.function.general.tex" }
+      },
+      "end": "(\\\\)(stopformula)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.function.tex" },
+        "2": { "name": "support.function.general.tex" }
+      },
+      "name": "support.class.math.block.tex",
+      "patterns": [
+        { "include": "#math" }
+      ]
+    },
+    {
       "match": "\\\\\\\\",
       "name": "keyword.control.newline.tex"
     },
