@@ -79,6 +79,21 @@
       ]
     },
     {
+      "begin": "(\\\\)(startluacode)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.function.tex" },
+        "2": { "name": "support.function.general.tex" }
+      },
+      "end": "(\\\\)(stopluacode)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.function.tex" },
+        "2": { "name": "support.function.general.tex" }
+      },
+      "patterns": [
+        { "include": "source.lua" }
+      ]
+    },
+    {
       "match": "\\\\\\\\",
       "name": "keyword.control.newline.tex"
     },
