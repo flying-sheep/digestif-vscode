@@ -3,8 +3,9 @@ import * as os from 'os'
 import * as vscode from 'vscode'
 import {
   ServerOptions,
+  TransportKind,
   WorkDoneProgressCancelNotification,
-} from 'vscode-languageclient'
+} from 'vscode-languageclient/node'
 import { BuildStatus, ForwardSearchStatus, TexLanguageClient } from './client'
 import {
   BIBTEX_FILE,
@@ -58,18 +59,18 @@ export async function activate(context: vscode.ExtensionContext) {
   )
 }
 
-function getServerOptions(serverCommand: string): ServerOptions {
+function getServerOptions(command: string): ServerOptions {
   const { ELECTRON_RUN_AS_NODE, ...env } = process.env
   return {
     run: {
-      command: serverCommand,
+      command,
       options: {
         env,
       },
     },
     debug: {
-      command: serverCommand,
-      args: ['-vvvv'],
+      command,
+      args: ['-v'],
       options: {
         env: {
           ...env,

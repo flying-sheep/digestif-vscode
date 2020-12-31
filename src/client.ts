@@ -6,7 +6,7 @@ import {
   ServerOptions,
   TextDocumentIdentifier,
   TextDocumentPositionParams,
-} from 'vscode-languageclient'
+} from 'vscode-languageclient/node'
 
 export enum BuildStatus {
   /**
@@ -77,7 +77,6 @@ abstract class BuildTextDocumentRequest {
   public static type = new RequestType<
     BuildTextDocumentParams,
     BuildResult,
-    void,
     void
   >('textDocument/build')
 }
@@ -86,7 +85,6 @@ abstract class ForwardSearchRequest {
   public static type = new RequestType<
     TextDocumentPositionParams,
     ForwardSearchResult,
-    void,
     void
   >('textDocument/forwardSearch')
 }
