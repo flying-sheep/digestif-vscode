@@ -2,7 +2,7 @@
   "name": "digestif",
   "displayName": "digestif",
   "description": "[La|Con|]TeX[t] for Visual Studio Code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "flying-sheep",
   "license": "MIT",
   "repository": {
